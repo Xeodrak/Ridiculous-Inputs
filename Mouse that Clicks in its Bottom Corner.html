@@ -6,7 +6,7 @@
 <img class="all bkg" src="https://i.pinimg.com/originals/6b/1b/3a/6b1b3af946249fc96d3ed0af073651f3.png">
 
 
-<!-- Section replicates the image dropdown menu -->
+<!-- Section replicates Photoshop's image dropdown menu -->
 <div class="all" id="imageDropDown">
   <!-- this shape fills the whole screen, which lets users close the dropdown by clicking anything outside of it -->
   <div class="all mask" onclick="hideImageDropDown()"></div>
@@ -22,7 +22,7 @@
 </div>
 
 
-<!--button that reveals the imageDropDown, it is lower in the code as to appear above the dropdown menu-->
+<!--button that reveals the dropdown, ("image" in Photoshop's upper toolbar) -->
 <button class="all imageButton" onclick="hideImageDropDown()"></button>
 
 
@@ -135,8 +135,8 @@
 
 <script>
 window.addEventListener("mousemove", function(event){
-    document.getElementsByClassName("cursor")[0].style.top = (event.clientY - 25) + "px";
-    document.getElementsByClassName("cursor")[0].style.left = (event.clientX - 15) + "px";
+    document.getElementsByClassName("cursor")[0].style.top = (event.clientY - 25) + "px";      //these lines position the fake cursor image so its
+    document.getElementsByClassName("cursor")[0].style.left = (event.clientX - 15) + "px";     // active click area is at the bottom right corner of the mouse
   })
 
 //Reveals dropdown menu when "image" is clicked in the PS toolbar
