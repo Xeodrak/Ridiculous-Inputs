@@ -1,0 +1,161 @@
+<html>
+<!-- BKG: Image of Photoshop -->
+<img class="all bkg" id="desaturated"
+  src="https://i.pinimg.com/originals/52/d4/64/52d4648f06b4ef5d1718e0c713f99427.png">
+<!-- ALT BKG: Image of Photoshop with content in black and white -->
+<img class="all bkg" src="https://i.pinimg.com/originals/6b/1b/3a/6b1b3af946249fc96d3ed0af073651f3.png">
+
+
+<!-- Section replicates the image dropdown menu -->
+<div class="all" id="imageDropDown">
+  <!-- this shape fills the whole screen, which lets users close the dropdown by clicking anything outside of it -->
+  <div class="all mask" onclick="hideImageDropDown()"></div>
+  <!-- dropdown menu-->
+  <img class="all menu" src="https://i.pinimg.com/originals/06/77/1a/06771ac8aebfbfbdf5d444e7f6036c3b.png">
+  <!-- opens adjustments submenu on hover -->
+  <Div class="all adjustments"></div>
+  <!-- adjustments subMenu and one active button -->
+  <div class="all imageSubMenu">
+    <img class="all menu" onclick="hideImageDropDown()" src="https://i.pinimg.com/originals/5c/8c/4b/5c8c4b06b5d63f8a537f57493b3ef856.png">
+    <Div class="all desaturateButton" onclick="desaturate()"></div>
+  </div>
+</div>
+
+
+<!--button that reveals the imageDropDown, it is lower in the code as to appear above the dropdown menu-->
+<button class="all imageButton" onclick="hideImageDropDown()"></button>
+
+
+<!-- JS-powered fake cursor which follows the mouse -->
+<div class="all cursor"></div>
+</html>
+
+<style>
+.cursor {
+  position: fixed;
+  top: calc(50vh - 50px);
+  left: calc(50vw - 50px);
+  content: url(https://i.pinimg.com/originals/34/10/4f/34104f86a11b88710d286ec7517ebd1c.png);
+  width: 1.8vw;
+  pointer-events: none;
+}
+
+#desaturated{
+  position: absolute;
+  display: none;
+}
+
+.bkg{
+  postition: absolute;
+
+  width: 1675px;
+  opacity: 1;
+}
+
+.mask{
+  width: 1675px;
+  height: 942px; 
+  position: absolute;
+  background-color: yellow;
+  opacity: 0;
+  left: -105px;
+}
+
+.all{
+  cursor: none;
+}
+
+.imageButton{
+  background-color: lightblue;
+  width: 48px;
+  height: 18px;
+  position: absolute;
+  top: 12px;
+  left: 108px;
+  opacity: 0;
+}
+
+/*Reveals button to open dropdown. For use while debugging 
+.imageButton:hover{
+  opacity: 0.5;
+} */
+
+
+#imageDropDown{
+  width: 200;
+  position: absolute;
+  top: 10px;
+  left: 105px;
+  display: none;
+}
+
+/* makes all menus the same width*/
+.menu{
+  width: 233px;
+  opacity: 1;
+}
+
+.adjustments{
+  position: absolute;
+  background-color:red;
+  opacity: 0;
+  width: 233px;
+  height: 20px;
+  top: 50px;
+  left: 0px;
+}
+
+.imageSubMenu{
+  position: absolute;
+  left: 230px;
+  top: 47px;
+  display: none;
+}
+
+/* Core interactivity feature. Reveals submenu of dropdown*/
+.adjustments:hover ~ .imageSubMenu{
+  display: block;
+}
+
+/* Keeps submenu open while the cursor hovers over it.*/
+.imageSubMenu:hover{
+  display: block;
+}
+
+.desaturateButton{
+  width: 233px;
+  height: 16px;
+  opacity: 0;
+  position: absolute;
+  left: 0px;
+  top: 394px;
+  background-color: yellow;
+}
+</style>
+
+<script>
+window.addEventListener("mousemove", function(event){
+    document.getElementsByClassName("cursor")[0].style.top = (event.clientY - 25) + "px";
+    document.getElementsByClassName("cursor")[0].style.left = (event.clientX - 15) + "px";
+  })
+
+//Reveals dropdown menu when "image" is clicked in the PS toolbar
+function hideImageDropDown(x) {
+  var x = document.getElementById("imageDropDown");
+  if (x.style.display === "none") {
+    x.style.display = "block";       //this is the line that makes it visible
+  } else {
+    x.style.display = "none";
+  }
+} 
+
+//Makes the B/W version of the photoshop background visible
+function desaturate(x) {
+  var x = document.getElementById("desaturated");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+} 
+</script>
